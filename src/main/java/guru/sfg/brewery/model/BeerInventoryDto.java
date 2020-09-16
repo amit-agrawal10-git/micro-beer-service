@@ -1,4 +1,4 @@
-package guru.springframework.msscbeerservice.services.inventory.model;
+package guru.sfg.brewery.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,6 +19,6 @@ public class BeerInventoryDto {
     private UUID id;
     private OffsetDateTime createdDate;
     private OffsetDateTime lastModifiedDate;
-    private UUID beerId;
+    private String upc;
     private Integer quantityOnHand;
 }

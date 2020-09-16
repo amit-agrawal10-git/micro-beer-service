@@ -23,7 +23,7 @@ public class BrewBeerListener {
     @JmsListener(destination = JMSConfig.BREWING_REQUEST_QUEUE)
     public void listen(BeerDto beerDto){
 
-        Beer beer = beerRepository.getOne(beerDto.getId());
+        Beer beer = beerRepository.findByUpc(beerDto.getUpc());
         beerDto.setQuantityOnHand(beer.getQuantityToBrew());
 
         log.debug("Brewed beer :"+beer.getMinOnHand()+", QoH: "+beer.getQuantityToBrew());
