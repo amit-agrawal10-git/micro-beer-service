@@ -1,6 +1,7 @@
 package guru.springframework.msscbeerservice.services.inventory;
 
 import guru.sfg.brewery.model.BeerInventoryDto;
+import guru.springframework.msscbeerservice.config.FeignClientAuthConfig;
 import guru.springframework.msscbeerservice.services.inventory.fallback.BeerInventoryFeignFallbackServiceImpl;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
-@FeignClient(name = "beer-inventory-service", fallback = BeerInventoryFeignFallbackServiceImpl.class)
+@FeignClient(name = "beer-inventory-service", fallback = BeerInventoryFeignFallbackServiceImpl.class, configuration = FeignClientAuthConfig.class)
 public interface BeerInventoryFeignService {
 
     @GetMapping(BeerInventoryServiceRestTemplateImpl.INVENTORY_PATH)
