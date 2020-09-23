@@ -19,7 +19,7 @@ import java.util.Objects;
  * Created by jt on 2019-06-07.
  */
 
-@Profile("!local-discovery")
+@Profile("!local-discovery & !digitalocean")
 @Slf4j
 @ConfigurationProperties(prefix = "sfg.brewery", ignoreUnknownFields = true)
 @Component

@@ -22,7 +22,7 @@ public class BreweryService {
     private final JmsTemplate jmsTemplate;
     private final BeerMapper beerMapper;
 
-    @Scheduled(fixedRate = 50000)
+    @Scheduled(fixedRate = 2000)
     public void checkForLowInventory(){
         List<Beer> beers = beerRepository.findAll();
 

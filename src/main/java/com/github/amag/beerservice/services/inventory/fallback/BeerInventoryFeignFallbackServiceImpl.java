@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Profile("local-discovery")
+@Profile({"local-discovery","digitalocean"})
 @Component
 @RequiredArgsConstructor
 public class BeerInventoryFeignFallbackServiceImpl implements BeerInventoryFeignService {

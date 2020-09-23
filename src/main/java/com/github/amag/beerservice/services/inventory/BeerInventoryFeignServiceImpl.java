@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Objects;
 
-@Profile("local-discovery")
+@Profile({"local-discovery","digitalocean"})
 @Slf4j
 @Component
 @RequiredArgsConstructor
