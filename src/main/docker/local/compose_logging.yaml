@@ -88,7 +88,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://host.docker.internal:3306/beerservice?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
       SPRING_ARTEMIS_HOST: jms
       EUREKA_INSTANCE_PREFER_IP_ADDRESS: 'true'
-      SFG_BREWERY_BEER-INVENTORY-SERVICE-HOST: http://inventory:8082
+      SFG_BREWERY_BEER-INVENTORY-SERVICE-HOST: http://13.126.138.255:8082
     restart: on-failure
     labels:
       collect_logs_with_filebeat: "true"

@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  beer-service:
+    image: beerworks/micro-beer-service
+    ports:
+      - 8080:8080
+    environment:
+      SPRING_PROFILES_ACTIVE: digitalocean
+      SPRING_APPLICATION_JSON: '{"eureka":{"client":{"serviceUrl":{"defaultZone":"http://netflix:eureka@13.127.15.134:8761/eureka/"},"region":"default","register-with-eureka":true},"instance":{"preferIpAddress":true,"hostName":"52.66.204.202"}},"spring":{"cloud":{"config":{"discovery":{"enabled":true,"serviceId":"micro-brewery-config"},"failFast":true,"username":"MyUserName","password":"MySecretPassword"}}},"application":{"name":"beer-service"}}'
+  order-service:
+    image: beerworks/micro-beer-order-service
+    ports:
+      - 8081:8081
+    restart: on-failure
+    environment:
+      SPRING_PROFILES_ACTIVE: digitalocean
+      SPRING_APPLICATION_JSON: '{"eureka":{"client":{"serviceUrl":{"defaultZone":"http://netflix:eureka@13.127.15.134:8761/eureka/"},"region":"default","register-with-eureka":true},"instance":{"preferIpAddress":true,"hostName":"52.66.204.202"}},"spring":{"cloud":{"config":{"discovery":{"enabled":true,"serviceId":"micro-brewery-config"},"failFast":true,"username":"MyUserName","password":"MySecretPassword"}}},"application":{"name":"beer-order-service"}}'
+      SFG_BREWERY_BEER-SERVICE-HOST: http://beer-service:8080
